@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'foodmenu.food',
+    'foodmenu.users'
 ]
 
 MIDDLEWARE = [
@@ -119,3 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# change the url redirect of the login django view
+LOGIN_REDIRECT_URL = 'food:index'
+LOGIN_URL = 'login'
+#paths for image saving
+MEDIA_ROOT= os.path.join(BASE_DIR, 'pictures')
+MEDIA_URL = '/pictures/'
