@@ -1,5 +1,7 @@
 from django.apps import AppConfig
 
-
 class UsersConfig(AppConfig):
-    name = 'users'
+    name = 'foodmenu.users'
+
+    def ready(self):
+        import foodmenu.users.signals
