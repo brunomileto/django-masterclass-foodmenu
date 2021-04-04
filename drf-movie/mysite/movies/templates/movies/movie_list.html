@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="get">
+      <input type="search" name="movie_name" />
+      <button type="submit">Search</button>
+    </form>
+
+    {% for movie_item in movie_objects %} {{movie_item.name}}
+    <br /><br />{{""}}{% endfor %}
+
+    <!-- check if movie object has previous itens in pagination -->
+    {% if movie_objects.has_previous %}
+    <a href="?page=1">First</a>
+    <a href="?page={{movie_objects.previous_page_number}}">Previous</a>
+    {% endif %} Page: {{movie_objects.number}} of
+    {{movie_objects.paginator.num_pages}}
+
+    <!-- check if movie object has next itens in pagination -->
+    {% if movie_objects.has_next %}
+    <a href="?page={{movie_objects.next_page_number}}">Next</a>
+    <a href="?page={{movie_objects.paginator.num_pages}}">Last</a>
+    {% endif %}
+  </body>
+</html>
