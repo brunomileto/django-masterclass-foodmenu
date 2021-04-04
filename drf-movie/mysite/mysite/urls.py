@@ -19,14 +19,16 @@ from rest_framework import routers
 from movies.views import MovieViewSet, ActionViewSet, ComedyViewSet
 from django.conf.urls.static import static
 from django.conf import settings
+from movies import views
 
 
 router = routers.SimpleRouter()
-router.register('movies', MovieViewSet)
+router.register('movies_list', MovieViewSet)
 router.register('action', ActionViewSet)
 router.register('comedy', ComedyViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
     path('admin/', admin.site.urls),
+    path("movies/", views.movie_list, name="movie_list")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
