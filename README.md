@@ -1,2 +1,1 @@
-# django-masterclass-foodmenu
- 
+Repository for a django course 
